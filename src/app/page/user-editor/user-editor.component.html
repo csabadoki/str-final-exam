@@ -1,7 +1,7 @@
 <div class="row">
   <div *ngIf="user$ | async as user" class="col-6 offset-3 mt-3">
     <h2>Update / Create User</h2>
-    <form #userForm="ngForm">
+    <form #userForm="ngForm" (ngSubmit)="onUpdate(userForm, user)">
       <input name="id" type="hidden" [(ngModel)]="user.id">
       <div class="form-group">
         <label>Name</label>
@@ -10,7 +10,10 @@
         class="form-control"
         type="text"
         name="name"
-        [(ngModel)]="user.name">
+        [(ngModel)]="user.name" pattern="^[A-Z].{8,40}" required>
+        <div [hidden]="userForm.controls.name?.valid" class="error-message">
+          The name must be minimum 8, maximum 40 characters.
+        </div>
       </div>
       <div class="form-group">
         <label>Email</label>
@@ -20,7 +23,11 @@
           class="form-control"
           type="text"
           name="email"
-          [(ngModel)]="user.email">
+          [(ngModel)]="user.email" pattern="\S+@\S+\.\S+"
+          required>
+          <div [hidden]="userForm.controls.email?.valid" class="error-message">
+            Az email cím kitöltése kötelező!
+          </div>
         </div>
         <div class="form-group">
           <label>Address</label>
@@ -29,7 +36,11 @@
           class="form-control"
           type="text"
           name="address"
-          [(ngModel)]="user.address">
+          [(ngModel)]="user.address"  pattern=".{8,100}"
+          required>
+          <div [hidden]="userForm.controls.address?.valid" class="error-message">
+            A cím minimum 8 maximum 100 karakter hosszú lehet!
+          </div>
       </div>
       <div class="form-group">
         <label>Active</label>
@@ -39,7 +50,7 @@
           <option [ngValue]="false">inactive</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary btn-block mt-5">
+      <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary btn-block mt-5">
         <i class="fa fa-save"></i>
       </button>
     </form>

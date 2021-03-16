@@ -11,6 +11,8 @@ import { UserService } from 'src/app/service/user.service';
 export class UserListComponent implements OnInit {
 
   users$: Observable<User[]> = this.userService.getAll();
+  phrase: string = '';
+  columnKey: string = '';
 
   constructor(
     private userService: UserService,
@@ -19,4 +21,19 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onChangePhrase(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
+  }
+
+  onColumnSelect(key: string) {
+    this.columnKey = key;
+  }
+
+  onDelete(user: User): void {
+    this.userService.remove(user).subscribe(
+      () => {
+        this.userService.getAll();
+      }
+    );
+  }
 }
