@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
@@ -16,6 +17,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -30,10 +32,10 @@ export class UserListComponent implements OnInit {
   }
 
   onDelete(user: User): void {
+    if (confirm('Valóban törli?')) {
     this.userService.remove(user).subscribe(
-      () => {
-        this.userService.getAll();
-      }
+      () => this.router.navigate(['/'])
     );
+    }
   }
 }

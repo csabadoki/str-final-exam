@@ -38,7 +38,7 @@ export class UserEditorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onUpdate(form: NgForm, user: User): void {
+  onUpdate(userForm: NgForm, user: User): void {
     try {
       if (user.id == 0) {
         this.userService.create(user).subscribe(
@@ -51,7 +51,7 @@ export class UserEditorComponent implements OnInit {
         );
       }
     } catch (error) {
-
+      console.log(error)
     }
   }
 }

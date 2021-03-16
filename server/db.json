@@ -1,41 +1,6 @@
 {
   "users": [
     {
-      "id": 4,
-      "name": "Brigitte Morland",
-      "email": "bmorland3@biblegateway.cov",
-      "address": "4514 Milwaukee Parkway",
-      "active": true
-    },
-    {
-      "id": 5,
-      "name": "Maxy Pendall",
-      "email": "mpendall4@answers.com",
-      "address": "27588 Upham Lane",
-      "active": false
-    },
-    {
-      "id": 6,
-      "name": "Catherin Hammatt",
-      "email": "chammatt5@w3.org",
-      "address": "64923 Butterfield Parkway",
-      "active": false
-    },
-    {
-      "id": 7,
-      "name": "Norean Danbury",
-      "email": "ndanbury6@naver.com",
-      "address": "23 Sommers Drive",
-      "active": true
-    },
-    {
-      "id": 8,
-      "name": "Stillman Crowche",
-      "email": "scrowche7@umich.edu",
-      "address": "53 Bunting Court",
-      "active": true
-    },
-    {
       "id": 9,
       "name": "Roderich Jimmison",
       "email": "rjimmison8@nih.gov",
